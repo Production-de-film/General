@@ -1,25 +1,27 @@
 from __init__ import *
 import re
 
-def infoFacebook():
-    while True:
-        try:
-            regexMail = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+# fonction qui va etre utilisé pour rentré les identifiants etc du compte pour se connecter 
+# PAS UTILISE POUR LE MOMENT CAR FLEMME DECRIRE A CHAQUE FOIS
+# def infoFacebook():
+#     while True:
+#         try:
+#             regexMail = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
             
-            mail = str(input("Saisir l'adresse mail du compte : "))
-            mdp = str(input("Saisir le mot de passe du compte : "))
+#             mail = str(input("Saisir l'adresse mail du compte : "))
+#             mdp = str(input("Saisir le mot de passe du compte : "))
 
-            if re.fullmatch(regexMail, mail):
-                return mail, mdp
-            else:
-                print("Le mail saisie n'est pas correcte")
-                False
+#             if re.fullmatch(regexMail, mail):
+#                 return mail, mdp
+#             else:
+#                 print("Le mail saisie n'est pas correcte")
+#                 False
 
-            if mail and mdp == "":
-                print("le mot de passe ou l'adresse mail ne peut pas être vide")
-                False
-        except:
-            print("le mot de passe ou l'adresse mail n'est pas valide !")
+#             if mail and mdp == "":
+#                 print("le mot de passe ou l'adresse mail ne peut pas être vide")
+#                 False
+#         except:
+#             print("le mot de passe ou l'adresse mail n'est pas valide !")
 
 def connexionFacebook(driver, mail, mdp) :
     try:
@@ -60,4 +62,5 @@ def connexionFacebook(driver, mail, mdp) :
     except ElementNotInteractableException:
         print("Un composant n'a pas pu être trouvé")
 
+        
 # connexionFacebook("ducorney.michel.le0@gmail.com", "azertyuiop013*")
