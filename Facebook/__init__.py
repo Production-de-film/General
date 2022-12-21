@@ -8,4 +8,5 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import ElementNotInteractableException
 from selenium.common.exceptions import NoSuchWindowException
 from PIL import Image
-
+import time
+import json
