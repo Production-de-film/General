@@ -9,13 +9,15 @@ def configResidence():
         valide = False
         print("La ville actuelle doit être renseigné")
 
-    with open('ville_de_france.json') as json_file:
-        json_data = json.load(json_file)
-
-    for i in json_data:
-        if villeActuelle.upper() in i['Nom_commune']:
-            valide = True
-            return valide, villeActuelle
+    # on va encoder en utf8 les données qui ne sont pas en utf8
+    types_of_encoding = ["utf8", "cp1252"]
+    for encoding_type in types_of_encoding:
+        # on va ouvrir le fichier en encodant chaque donnée en utf8
+        with codecs.open("ville_de_france.csv", encoding = encoding_type, errors ='replace') as csvfile:
+            spamreader = csv.reader(csvfile)
+            for row in spamreader:
+                if villeActuelle in row[3]:
+                    return valide, villeActuelle
 
     return print("La ville n'existe pas, merci de saisir une ville française")
 
