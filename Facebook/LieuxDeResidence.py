@@ -9,17 +9,19 @@ def configResidence():
         valide = False
         print("La ville actuelle doit être renseigné")
 
-    # on va encoder en utf8 les données qui ne sont pas en utf8
-    types_of_encoding = ["utf8", "cp1252"]
-    for encoding_type in types_of_encoding:
-        # on va ouvrir le fichier en encodant chaque donnée en utf8
-        with codecs.open("ville_de_france.csv", encoding = encoding_type, errors ='replace') as csvfile:
-            spamreader = csv.reader(csvfile)
-            for row in spamreader:
-                if villeActuelle in row[3]:
-                    return valide, villeActuelle
+    with open('ville_de_france.json') as json_file:
+        json_data = json.load(json_file)
 
-    return print("La ville n'existe pas, merci de saisir une ville française")
+    # on parcours tout le fichier ce qui nous donne une liste des pays
+    for i in json_data:
+        # on parcours tous les pays un par un 
+        for j in json_data[i]:
+            # si la ville saisie est dans la liste des villes d'un pays alors on return le tout 
+            if villeActuelle in j:
+                valide = True
+                return valide, villeActuelle
+
+    return print("La ville n'existe pas, veillez à saisir l'orthographe exacte de la ville")
 
 def ajouterResidence(driver, villeActuelle):
     try:
