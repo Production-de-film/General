@@ -17,6 +17,8 @@ def configResidence():
             valide = True
             return valide, villeActuelle
 
+    return print("La ville n'existe pas, merci de saisir une ville française")
+
 def ajouterResidence(driver, villeActuelle):
     try:
         delay = 1000
